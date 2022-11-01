@@ -139,7 +139,7 @@ function renderTypePhone(type, id) {
 
 
     phone.map((sp) => {
-        iphoneHTML += createHTML(sp.image, sp.name, sp.price);
+        iphoneHTML += createHTML(sp.image, sp.name, sp.price, sp.id);
     })
 
     // render ra giao dien
