@@ -1,0 +1,1140 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>shopcart</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- OWL CAROUSEL -->
+    <link rel="stylesheet" href="./vendor/owl_carousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="./vendor/owl_carousel/owl.theme.default.css">
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Bootstrap CSS v5.2.1 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+
+    <!-------- Giao Diện Thanh Toán        --------->
+    <div id="paypalAll" class="paypal-all">
+        <div class="paypal-bg">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                  <th>Tên Sản Phẩm</th>
+                  <th>Số Lượng</th>
+                  <th>Giá</th>
+                </tr></thead>
+                <tbody id="renderPayment">
+        
+                </tbody>
+            </table>
+            <p>Thanh Toán</p>
+            <div class="payment-bottom">
+                <p>Tổng Tiền Thanh Toán:</p>
+                <p  id="totalPayment"></p>
+            </div>
+            <div class="paypal-btn">
+                <button onclick="completedPay()" class="btn">Thanh Toán</button>
+                <button onclick="closeCart('paypalAll')" class="btn">hủy Bỏ</button>
+            </div>
+        </div>
+    </div>
+<!-------------------------------------------------------------------------------------------------------->
+
+    <header class="header">
+        <div class="header__top">
+            <div class="container-fluid">
+                <div class="bg__flex">
+                    <div class="upcoming">
+                        <img src="./img/images/sprite_11.png" alt="icon" class="img-fluid">
+                        <span>Wants to explore Upcoming Deals on Weekends?</span>
+                    </div>
+                    <div class="header__feature">
+                        <div class="language">
+                            <span onclick="showHeaderTop('language','rot1')">
+                                <img src="./img/images/en-gb.png" alt="icon" class="img-fluid">
+                                Language
+                                <i id="rot1" class="fa fa-angle-down"></i>
+                            </span>
+                            <ul id="language" class="language__show">
+                                <li>
+                                    <img src="./img/images/en-gb.png" alt="icon" class="img-fluid">
+                                    <a href="#">English</a>
+                                </li>
+                                <li class="mt-2">
+                                    <img src="./img/images/en-gb.png" alt="icon" class="img-fluid">
+                                    <a href="#"> Arabic</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                        <div class="current">
+                            <span onclick="showHeaderTop('current','rot2')">
+                                <strong>$</strong>
+                                Currency
+                                <i id="rot2" class="fa fa-angle-down"></i>
+                            </span>
+                            <ul id="current" class="current__show">
+                                <li>
+                                    <a href="#">€ Euro</a>
+                                </li>
+                                <li class="mt-2">
+                                    <a href="#">£ Pound Sterling</a>
+                                </li>
+                                <li class="mt-2">
+                                    <a href="#">$ US Dollar</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="account">
+                            <span onclick="showHeaderTop('account','rot3')">
+                                My Account
+                                <i id="rot3" class="fa fa-angle-down"></i>
+                            </span>
+                            <ul id="account" class="account__show">
+                                <li>
+                                    <a href="#"><i class="fa fa-user"></i> Register</a>
+                                </li>
+                                <li class="mt-2">
+                                    <a href="./QuanLySanPham/quanly.html"><i class="fa fa-sign-in-alt"></i> Sign In</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="wish__list">
+                            <span>
+                                Wish List
+                                <b>(0)</b>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header__body">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-3">
+                        <div class="header__logo">
+                            <a href="">
+                                <img src="./img/images/logo.png" alt="logo" class="img-fluid">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="header__search input-group">
+                            <input oninput="searchPhone()" id="keyWord" type="text" class="form-control input-lg">
+                            <div class="categories">
+                                <select name="category" class="form-control innner-search">
+
+                                    <option value="">Categories</option>
+                                    <option value="">Electronics</option>
+                                    <option value="">&nbsp;&nbsp;Laptops</option>
+                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dell</option>
+                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSI</option>
+                                    <option value="">&nbsp;&nbsp;Mobile</option>
+                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Iphone</option>
+                                    <option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Samsung</option>
+                                </select>
+                                <i class="fa fa-angle-down"></i>
+                            </div>
+                            <button class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="header__contact">
+
+                            <div class="phoneCenter">
+                                <div class="phone__icon">
+                                    <img src="./img/images/sprite_09.png" alt="" class="img-fluid">
+                                </div>
+                                <div class="phone__content">
+                                    <p>Call Center</p>
+                                    <p>088-888-8888</p>
+                                </div>
+                            </div>
+
+
+                            <div  class="header__card">
+                                <p onclick="renderCart()">
+                                    Card
+                                    <img src="./img/images/sprite_06.png" alt="card" class="img-fluid">
+                                    <span id="quantity">0</span>
+                                </p>
+
+
+                                <div id="showCart" class="show-cart">
+                                    <button onclick="closeCart()" class="close-cart">
+                                        <i class="fa fa-times"></i>
+                                    </button>
+                                    <div id="cartHTML" class="cart"> 
+                                    </div>
+                                    <div class="bottom-cart">
+                                        <div class="cart-total">
+                                            <span>Total:</span>
+                                            <span id="totalAllItem" class="total">$ 0</span>
+                                        </div>
+    
+                                        <div class="cart-btn">
+                                            <button onclick="payment()" class="btn"><i class="fab fa-cc-amazon-pay"></i> Thanh Toán</button>
+                                            <button onclick="deleteAllCart()" class="btn"><i class="fa fa-trash-restore"></i> Xóa Giỏ Hàng</button>
+    
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="header__bottom my-3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="./img/topbanner-1.jpg" alt="banner" class="img-fluild">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-2 cat_left">
+                    <div class="bg-white p-2">
+                        <div class="cat_cat">
+                            <h6>Categories</h6>
+                            <div class="div">
+                                <li> <a onclick="renderType('iphone')">Iphone</a></li>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="div">
+                                <li> <a onclick="renderType('samsung')">Samsung</a></li>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="div">
+                                <li> <a onclick="renderType('oppo')">Oppo</a></li>
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Levono</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Nokia</a></li>
+
+                            </div>
+
+                            <div class="div">
+                                <li> <a href="">Digital-Camera</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Gionee</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Intex</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Philips</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Apple</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Oppo</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Sony</a></li>
+
+                            </div>
+                            <div class="div">
+                                <li> <a href="">Hitachi</a></li>
+
+                            </div>
+                        </div>
+                        <div class="cat_testi">
+                            <h6>Testimonials</h6>
+                        </div>
+
+                        <div class="cat_banner">
+                            <img src="./images/left-banner-1-231x460.jpg" alt="">
+                        </div>
+
+                        <div class="cat_feat">
+                            <h6>Featured</h6>
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/1.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/1.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aspetur A...</span>
+                                    <div class="star">
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                    </div>
+                                    <div class="p">$11,402.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/2.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/2.2.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="sale">Sale</div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aliquam Q...</span>
+
+                                    <div class="p">$90.00</div>
+                                    <div class="old">$2,000.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                            <div class="box"></div>
+
+
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/3.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/3.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Similique Su...</span>
+
+                                    <div class="p">$1,202.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                            <div class="box"></div>
+
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/4.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/2.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Suscipit L...</span>
+
+                                    <div class="p">$122.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                            <div class="box"></div>
+
+
+                            <div class="container last">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/3.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/1.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aspetur A...</span>
+                                    <div class="star">
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                    </div>
+                                    <div class="p">$11,402.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+
+                            <h6>Best Seller</h6>
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/2.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/2.2.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="sale">Sale</div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aliquam Q...</span>
+
+                                    <div class="p">$90.00</div>
+                                    <div class="old">$2,000.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                            <div class="box"></div>
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/2.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/2.2.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="sale">Sale</div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aliquam Q...</span>
+
+                                    <div class="p">$90.00</div>
+                                    <div class="old">$2,000.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                            <div class="box"></div>
+
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/1.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/1.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aspetur A...</span>
+                                    <div class="star">
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                    </div>
+                                    <div class="p">$11,402.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-8">
+                    <div class="row" id="renderType">
+                        <div id="controll" class="carousel">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="carousel__item">
+                                        <div class="owl-carousel owl-theme banner-carousel">
+                                            <div class="item">
+                                                <img src="./img/slider-01-1046x450.jpg" alt="slider" class="img-fluid">
+                                            </div>
+                                            <div class="item"><img src="./img/slider-02-1046x450.jpg" alt="slider"
+                                                    class="img-fluid"></div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="banner__bottom">
+                                        <img src="./img/bottombanner-1.jpg" alt="banner" class="img-fluid">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="product my-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="product__title">
+                                            <div class="product__text">
+                                                <h5 onclick="renderProductAll()" class="active">All Phone</h5>
+                                                <h5 onclick="renderTypePhone('iphone')">Iphone</h5> 
+                                                <h5 onclick="renderTypePhone('samsung')">Samsung</h5>
+                                                <h5 onclick="renderTypePhone('oppo')">Oppo</h5>
+                                            </div>
+
+                                        </div>
+                                        <div class="product__item">
+                                            <div id="allItem" class="row">
+                                                
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="sub__banner">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <div class="sub__item">
+                                            <a href="#">
+                                                <img src="./img/subbanner-1.jpg" alt="sub banner" class="img-fluid">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="sub__item">
+                                            <a href="#">
+                                                <img src="./img/subbanner-2.jpg" alt="sub banner" class="img-fluid">
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-4">
+                                        <div class="sub__item">
+                                            <a href="#">
+                                                <img src="./img/subbanner-3.jpg" alt="sub banner" class="img-fluid">
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            <div class="blog product">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="product__title">
+                                            <div class="product__text">
+                                                <h5>Latest Blog</h5>
+                                            </div>
+                                            <div class="product__controll">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="product__item">
+                                            <div class="owl-carousel owl-theme blog-carousel">
+                                                <div class="blog-item item">
+
+                                                    <div class="blog-item-top">
+                                                        <a href="#">
+                                                            <img src="./img/product-bottom.jpg" alt=""
+                                                                class="img-reponsive">
+                                                            <div class="blog-hover"></div>
+
+                                                            <div class="blog-icon">
+                                                                <i class="fa fa-search"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="blog-item-bottom">
+                                                        <h5><a href="#">Answers To Your Questions...</a></h5>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing...</p>
+                                                        <div class="blog-btn">
+                                                            <a href="#">Read More ></a>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
+                                                <div class="blog-item item">
+
+                                                    <div class="blog-item-top">
+                                                        <a href="#">
+                                                            <img src="./img/product-bottom1.jpg" alt=""
+                                                                class="img-reponsive">
+                                                            <div class="blog-hover"></div>
+
+                                                            <div class="blog-icon">
+                                                                <i class="fa fa-search"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="blog-item-bottom">
+                                                        <h5><a href="#">Answers To Your Questions...</a></h5>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing...</p>
+                                                        <div class="blog-btn">
+                                                            <a href="#">Read More ></a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="blog-item item">
+
+                                                    <div class="blog-item-top">
+                                                        <a href="#">
+                                                            <img src="./img/product-bottom2.jpg" alt=""
+                                                                class="img-reponsive">
+                                                            <div class="blog-hover"></div>
+
+                                                            <div class="blog-icon">
+                                                                <i class="fa fa-search"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="blog-item-bottom">
+                                                        <h5><a href="#">Answers To Your Questions...</a></h5>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing...</p>
+                                                        <div class="blog-btn">
+                                                            <a href="#">Read More ></a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+                                                <div class="blog-item item">
+
+                                                    <div class="blog-item-top">
+                                                        <a href="#">
+                                                            <img src="./img/productbottom3.jpg" alt=""
+                                                                class="img-reponsive">
+                                                            <div class="blog-hover"></div>
+                                                            <div class="blog-icon">
+                                                                <i class="fa fa-search"></i>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                    <div class="blog-item-bottom">
+                                                        <h5><a href="#">Answers To Your Questions...</a></h5>
+                                                        <p>Lorem Ipsum is simply dummy text of the printing...</p>
+                                                        <div class="blog-btn">
+                                                            <a href="#">Read More ></a>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="logo-icon product my-3">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="product__title">
+                                            <div class="product__text">
+                                                <h5>Manufacturers</h5>
+                                            </div>
+                                            <div class="product__controll">
+
+                                            </div>
+
+                                        </div>
+                                        <div class="product__item">
+                                            <div class="owl-carousel owl-theme product-carousel">
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-01-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-02-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-03-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-04-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-05-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-06-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-07-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                                <div class="item">
+                                                    <img src="./img/brand-logo-08-140x100.png" alt="logo"
+                                                        class="img-reponsive">
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-lg-2  cat_right">
+                    <div class="bg-white p-2">
+                        <div class="cat_service">
+                            <div class="cat_block">
+                                <img src="./img/shipping.png" alt="">
+                                <div class="content">
+                                    <p><a href="">Free Shipping</a></p>
+                                    <span>Deliver to door</span>
+                                </div>
+
+                            </div>
+                            <div class="cat_block">
+                                <img src="./img/support.png" alt="">
+                                <div class="content">
+                                    <p><a href="">24x7 Support</a></p>
+                                    <span>In safe hands</span>
+                                </div>
+
+                            </div>
+                            <div class="cat_block">
+                                <img src="./img/saving.png" alt="">
+                                <div class="content">
+                                    <p><a href="">Big Saving</a></p>
+                                    <span>At lowest price</span>
+                                </div>
+
+                            </div>
+                            <div class="cat_block">
+                                <img src="./img/invest.png" alt="">
+                                <div class="content">
+                                    <p><a href="">Money Back</a></p>
+                                    <span>Deliver to door</span>
+                                </div>
+
+                            </div>
+                            <div class="cat_block">
+                                <img src="./img/shopping.png" alt="">
+                                <div class="content">
+                                    <p><a href="">Online Store</a></p>
+                                    <span>A huge branding</span>
+                                </div>
+
+                            </div>
+                            <div class="cat_block">
+                                <img src="./img/trophy.png" alt="">
+                                <div class="content">
+                                    <p><a href="">Award Winner</a></p>
+                                    <span>For best services</span>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="cat_banner">
+                            <img src="./images/right-banner-1-231x460.jpg" alt="">
+                        </div>
+                        <div class="cat_feat">
+                            <h6>Best Seller</h6>
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/1.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/1.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aspetur A...</span>
+                                    <div class="star">
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                    </div>
+                                    <div class="p">$11,402.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/2.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/2.2.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="sale">Sale</div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aliquam Q...</span>
+
+                                    <div class="p">$90.00</div>
+                                    <div class="old">$2,000.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                            <div class="box"></div>
+
+
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/3.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/3.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Similique Su...</span>
+
+                                    <div class="p">$1,202.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="cat_feat">
+                            <h6>Latest</h6>
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/1.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/1.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aspetur A...</span>
+                                    <div class="star">
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                        <i class="fa-sharp fa-solid fa-star"></i>
+                                    </div>
+                                    <div class="p">$11,402.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/2.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/2.2.jpg" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="sale">Sale</div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Aliquam Q...</span>
+
+                                    <div class="p">$90.00</div>
+                                    <div class="old">$2,000.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+                            <div class="box"></div>
+
+
+
+                            <div class="container">
+                                <div class="product">
+                                    <div class="pic">
+                                        <img src="./images/3.1.jpg" class="img-fluid" alt="">
+                                        <img src="./images/3.2.jpg" class="img-fluid" alt="">
+                                    </div>
+
+                                </div>
+                                <div class="des">
+                                    <span>Similique Su...</span>
+
+                                    <div class="p">$1,202.00</div>
+
+                                    <div class="link"><a href="#">Add To Cart</a></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </main>
+
+
+
+
+
+
+
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <!---------------- FOOTER TOP -------------->
+            <div class="row ">
+                <div class="col-3 service">
+                    <div class="d-flex">
+                        <div class="icon me-2 img-fluid"> <img src="./images/footer-services-sprite1.png" alt="icon">
+                        </div>
+                        <div class="info">
+                            <h6>Assured Purchase</h6>
+                            <p>Provide genuine service & store products</p>
+                        </div>
+                    </div>
+                    <div class="service_block">
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>100% genuine products</span>
+                        </div>
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>Deliver items at door</span>
+                        </div>
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>Free to return products</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 service">
+                    <div class="d-flex">
+                        <div class="icon me-2"> <img src="./images/footer-services-sprite2.png" alt="icon"
+                                class=" img-fluid"></div>
+                        <div class="info">
+                            <h6>Esay To Buy & Return</h6>
+                            <p>Single click to buy & return products</p>
+                        </div>
+                    </div>
+                    <div class="service_block">
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>Same day devilery available</span>
+                        </div>
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>Click to return products</span>
+                        </div>
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>Quick support links available</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 service">
+                    <div class="d-flex">
+                        <div class="icon me-2 img-fluid"> <img src="./images/footer-services-sprite.png" alt="icon">
+                        </div>
+                        <div class="info">
+                            <h6>Secure Payments</h6>
+                            <p>Accepts all credit & debit cards</p>
+                        </div>
+                    </div>
+                    <div class="service_block">
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>100% payment security</span>
+                        </div>
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>Confirmation authentity</span>
+                        </div>
+                        <div class="check">
+                            <i class="fa fa-check"></i>
+                            <span>Delivery items at door</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3 ">
+                    <div class="d-flex">
+                        <div class="icon me-2 img-fluid"> <img src="./images/footer-services-sprite3.png" alt="icon">
+                        </div>
+                        <div class="info">
+                            <h6>
+                                Download Center</h6>
+                            <p>Use mobile app and get biggest discounts</p>
+                        </div>
+                    </div>
+                    <div class="service_block download">
+                        <div class="check">
+                            <i class="fab fa-android"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="check">
+                            <i class="fab fa-apple"></i>
+                            <span>IOS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!----------------------- FOOTER MID ------------------>
+            <div class="middle">
+                <div class="item one">
+                    <h6>About Store</h6>
+                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus, duis faucibus enim vitae nunc
+                        molestie.</p>
+                </div>
+
+                <div class="item">
+                    <h6>Customer Service</h6>
+                    <ul>
+                        <li><a href="#">Brands</a></li>
+                        <li><a href="#">Gift Cartificates</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Specials</a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <h6>Extras</h6>
+                    <ul>
+                        <li><a href="#">Brands</a></li>
+                        <li><a href="#">Gift Cartificates</a></li>
+                        <li><a href="#">Affiliates</a></li>
+                        <li><a href="#">Specials</a></li>
+                    </ul>
+                </div>
+                <div class="item">
+                    <h6>My Account</h6>
+                    <ul>
+                        <li><a href="#">My account</a></li>
+                        <li><a href="#">Order history</a></li>
+                        <li><a href="#">Wish list</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="#">Returns</a></li>
+                    </ul>
+                </div>
+                <div class="item one">
+                    <h6>Store Information</h6>
+                    <p><i class="fa fa-map-marker-alt"></i>&nbsp;&nbsp;My Company, 42 Puffin street 12345 Puffinville
+                        France</p>
+                    <p><i class="fa fa-phone"></i>&nbsp;&nbsp;0123-456-789</p>
+                    <p><i class="fa fa-envelope"></i>&nbsp;&nbsp;sales@yourcompany.com</p>
+                </div>
+            </div>
+            <!------- PAYMENT -------->
+            <div class="payment">
+                <h6>Payment Accepted By Store</h6>
+                <img src="./images/visa.png" alt="">
+                <img src="./images/mastercard.png" alt="">
+                <img src="./images/discover.png" alt="">
+            </div>
+
+
+        </div>
+        <footer class="copyright">
+            <div class="container">
+                <p>Powered By OpenCart Demo Store © 2022</p>
+                <div class="icon">
+                    <div class="round"><i class="fab fa-facebook-f"></i> </div>
+                    <div class="round"><i class="fab fa-twitter"></i> </div>
+                    <div class="round"><i class="fa fa-wifi"></i> </div>
+                    <div class="round"><i class="fab fa-google"></i> </div>
+                </div>
+            </div>
+
+
+        </footer>
+    </footer>
+    <!-- JQUERY -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+        integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous">
+        </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+        integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous">
+        </script>
+    <!-- OWL CAROUSEL -->
+    <script src="./vendor/owl_carousel/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0/axios.min.js" integrity="sha512-26uCxGyoPL1nESYXHQ+KUmm3Maml7MEQNWU8hIt1hJaZa5KQAQ5ehBqK6eydcCOh6YAuZjV3augxu/5tY4fsgQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script src="./js/controller/render.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
